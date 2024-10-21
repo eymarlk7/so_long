@@ -19,5 +19,6 @@ typedef struct  s_data
 }   t_data;
 
 char	*get_next_line(int fd);
+void    ft_check_map(char **map);
 
 #endif
