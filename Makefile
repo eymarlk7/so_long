@@ -3,6 +3,7 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
 SRC =	so_long.c \
+		ft_utils.c \
 		check_map.c \
 		get_next_line.c
 

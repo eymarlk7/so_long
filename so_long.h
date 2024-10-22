@@ -18,7 +18,23 @@ typedef struct  s_data
     char  **map;
 }   t_data;
 
+
+
+/* FUNCTIONS */
+
+int     check_dup(char **map);
+int     map_len_x(char *line);
+int     map_len_y(char **map);
+int     check_line(char **map);
+int     check_walls(char **map);
+int     check_walls2(char **map);
+int     map_extension(char *map);
+int     check_map_args(char **map);
+int     check_rectangle(char **map);
+int     check_collectible(char **map);
+
 char	*get_next_line(int fd);
-void    ft_check_map(char **map);
+
+void    ft_check_map(char *path, char **map);
 
 #endif
