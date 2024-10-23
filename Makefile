@@ -2,9 +2,12 @@ NAME = so_long
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
-SRC =	so_long.c \
+SRC =		so_long.c \
+		rend_map.c \
 		ft_utils.c \
 		check_map.c \
+		flood_fill.c \
+		handler_hooks.c \
 		get_next_line.c
 
 OBJ = $(SRC:.c=.o)
@@ -16,7 +19,7 @@ LIBFT = $(L_DIR)/libft.a
 all: $(NAME)
 
 $(NAME): $(OBJ) $(LIBFT) $(MLX)
-	$(CC) $(CFLAGS) $(OBJ) -L./minilibx-linux $(MLX_FLAGS) -o $(NAME) $(LIBFT)
+	$(CC) $(OBJ) -L./minilibx-linux $(MLX_FLAGS) -o $(NAME) $(LIBFT)
 
 $(MLX):
 	$(MAKE) -C ./minilibx-linux
