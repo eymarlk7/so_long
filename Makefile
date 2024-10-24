@@ -7,7 +7,7 @@ SRC =		so_long.c \
 		ft_utils.c \
 		check_map.c \
 		flood_fill.c \
-		handler_hooks.c \
+		ft_free.c \
 		ft_move_player.c \
 		get_next_line.c
 
