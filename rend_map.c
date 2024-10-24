@@ -12,11 +12,17 @@ void init_items(t_data *data)
     data->img_c = mlx_xpm_file_to_image(data->mlx, "textures/img_c.xpm", &width, &height); 
 }
 
+void init_position(t_point *point)
+{
+    point->x = 0;
+    point->y = 0;
+}
+
 void print_map(char  **map, t_data *data,  t_point point)
 {
     t_point matrix;
-
-    matrix.y = 0;      
+    
+    init_position(&matrix);      
     while (map[matrix.y])
     {
         matrix.x = 0;

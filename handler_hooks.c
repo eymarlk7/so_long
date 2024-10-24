@@ -21,8 +21,8 @@ int on_keypress(int keysym, t_data *data)
         }
 	return (0);
 }
-void    handler_hooks(t_data data)
-{
-        mlx_hook(data.window, KeyRelease, KeyReleaseMask, &on_keypress, &data);
-        mlx_hook(data.window, DestroyNotify, StructureNotifyMask, &on_destroy, &data);
-}
+// void    handler_hooks(t_data data)
+// {
+//         mlx_hook(data.window, KeyRelease, KeyReleaseMask, &on_keypress, &data);
+//         mlx_hook(data.window, DestroyNotify, StructureNotifyMask, &on_destroy, &data);
+// }

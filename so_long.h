@@ -13,14 +13,15 @@
 
 typedef struct  s_data
 {
+    char    **map;
     void    *mlx;
     void    *window;
-    char    **map;
     void    *img_c;
     void    *img_p;
     void    *img_1;
     void    *img_0;
     void    *img_e;
+    int     count;
 }   t_data;
 
 typedef struct 	s_point 
@@ -32,6 +33,12 @@ typedef struct 	s_point
 
 
 /* FUNCTIONS */
+void    ft_mov_player_left(t_data *data, t_point *player);
+void    ft_mov_player_right(t_data *data, t_point *player);
+void    ft_mov_player_down(t_data *data, t_point *player);
+void    ft_mov_player_up(t_data *data, t_point *player);
+t_point find_player(char **map);
+int on_keypress(int keysym, t_data *data);
 int on_keypress(int keysym, t_data *data);
 int on_destroy(t_data *data);
 void    handler_hooks(t_data data);

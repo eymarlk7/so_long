@@ -8,6 +8,7 @@ SRC =		so_long.c \
 		check_map.c \
 		flood_fill.c \
 		handler_hooks.c \
+		ft_move_player.c \
 		get_next_line.c
 
 OBJ = $(SRC:.c=.o)
@@ -22,20 +23,20 @@ $(NAME): $(OBJ) $(LIBFT) $(MLX)
 	$(CC) $(OBJ) -L./minilibx-linux $(MLX_FLAGS) -o $(NAME) $(LIBFT)
 
 $(MLX):
-	$(MAKE) -C ./minilibx-linux
+	$(MAKE) -s -C ./minilibx-linux
 
 $(LIBFT):
-	$(MAKE) -C ./libft
+	$(MAKE) -s -C ./libft
 
 clean:
 	rm -f $(OBJ)
-	@$(MAKE) clean -C ./minilibx-linux
-	@$(MAKE) clean -C ./libft
+	@$(MAKE) clean -s -C ./minilibx-linux
+	@$(MAKE) clean -s -C ./libft
 
 fclean: clean
 	rm -f $(NAME)
-	@$(MAKE) clean -C ./minilibx-linux
-	@$(MAKE) fclean -C ./libft
+	@$(MAKE) clean -s -C ./minilibx-linux
+	@$(MAKE) fclean -s -C ./libft
 
 re: fclean all
 
