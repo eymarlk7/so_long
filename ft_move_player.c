@@ -6,7 +6,7 @@
 /*   By: pcapalan <pcapalan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 20:08:29 by pcapalan          #+#    #+#             */
-/*   Updated: 2024/10/24 20:11:37 by pcapalan         ###   ########.fr       */
+/*   Updated: 2024/10/24 20:30:02 by pcapalan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void	ft_mov_player_left(t_data *data, t_point *player)
 	}
 	player->x--;
 }
+
 void	ft_mov_player_up(t_data *data, t_point *player)
 {
 	*player = find_player(data->map);

@@ -2,12 +2,13 @@ NAME = so_long
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
-SRC =		so_long.c \
+SRC =	so_long.c \
+		ft_free.c \
 		rend_map.c \
 		ft_utils.c \
 		check_map.c \
+		check_map2.c\
 		flood_fill.c \
-		ft_free.c \
 		ft_move_player.c \
 		get_next_line.c
 
