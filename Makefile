@@ -2,17 +2,19 @@ NAME = so_long
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
-SRC =	so_long.c \
-		ft_free.c \
-		rend_map.c \
-		ft_utils.c \
-		check_map.c \
-		check_map2.c\
-		flood_fill.c \
-		ft_move_player.c \
-		get_next_line.c
+SRCS =	./srcs/so_long.c \
+		./srcs/ft_free.c \
+		./srcs/ft_init.c \
+		./srcs/rend_map.c \
+		./srcs/ft_utils.c \
+		./srcs/check_map.c \
+		./srcs/check_map2.c\
+		./srcs/flood_fill.c \
+		./srcs/ft_read_map.c \
+		./srcs/img_map_items.c \
+		./srcs/ft_move_player.c 
 
-OBJ = $(SRC:.c=.o)
+OBJ = $(SRCS:.c=.o)
 MLX_FLAGS = -Lmlx -lmlx -lXext -lX11 -lm
 MLX = ./minilibx-linux/libmlx.a
 L_DIR = ./libft

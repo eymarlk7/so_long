@@ -1,3 +1,6 @@
 {
-        "functionHeaderExtension.headerFilePath": "/home/playboy7xb/so_long/so_long.h"
+        "functionHeaderExtension.headerFilePath": "/home/playboy7xb/so_long/so_long.h",
+        "files.associations": {
+                "so_long.h": "c"
+        }
 }

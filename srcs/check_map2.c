@@ -6,11 +6,11 @@
 /*   By: pcapalan <pcapalan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 20:25:15 by pcapalan          #+#    #+#             */
-/*   Updated: 2024/10/24 20:28:38 by pcapalan         ###   ########.fr       */
+/*   Updated: 2024/10/25 18:11:15 by pcapalan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./include/so_long.h"
+#include "../include/so_long.h"
 
 int	check_map_args(char **map)
 {

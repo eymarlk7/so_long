@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   so_long.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pcapalan <pcapalan@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/25 17:19:05 by pcapalan          #+#    #+#             */
+/*   Updated: 2024/10/25 18:04:35 by pcapalan         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef SO_LONG_H
 
 # define SO_LONG_H
@@ -30,9 +42,15 @@ typedef struct s_point
 	int		y;
 }			t_point;
 
-t_point		find_player(char **map);
+// teste
 
-char		*get_next_line(int fd);
+t_point		find_player(char **map);
+void		init_items(t_data *data);
+t_point		ft_position(t_point position);
+void		init_position(t_point *position);
+void		initiate_struct(t_data *data, char **map);
+
+char		*ft_read_str(int fd);
 char		**get_map(char *map_path);
 
 int			check_dup(char **map);
@@ -52,9 +70,12 @@ int			ft_check_map(char *path, char **map);
 int			start_player(int keysym, t_data *data);
 
 void		check_status(int nbr);
-void		init_items(t_data *data);
-void		initiate_struct(t_data *data, char **map);
+void		img_walls(t_data *data, t_point point);
+void		img_player(t_data *data, t_point point);
+void		img_door(t_data *data, t_point position);
 void		ft_mov_player_up(t_data *data, t_point *player);
+void		img_collectable(t_data *data, t_point position);
+void		img_empty_space(t_data *data, t_point position);
 void		ft_mov_player_down(t_data *data, t_point *player);
 void		ft_mov_player_left(t_data *data, t_point *player);
 void		ft_mov_player_right(t_data *data, t_point *player);

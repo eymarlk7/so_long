@@ -6,11 +6,11 @@
 /*   By: pcapalan <pcapalan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 20:08:42 by pcapalan          #+#    #+#             */
-/*   Updated: 2024/10/24 20:24:34 by pcapalan         ###   ########.fr       */
+/*   Updated: 2024/10/25 18:55:35 by pcapalan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./include/so_long.h"
+#include "../include/so_long.h"
 
 int	check_rectangle(char **map)
 {
@@ -39,6 +39,9 @@ int	map_extension(char *map)
 			return (-1);
 		}
 	}
+	else
+		return (-1);
+	free(str);
 	return (0);
 }
 

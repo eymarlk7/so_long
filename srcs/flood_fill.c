@@ -6,11 +6,11 @@
 /*   By: pcapalan <pcapalan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 20:08:17 by pcapalan          #+#    #+#             */
-/*   Updated: 2024/10/24 20:11:23 by pcapalan         ###   ########.fr       */
+/*   Updated: 2024/10/25 18:11:23 by pcapalan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./include/so_long.h"
+#include "../include/so_long.h"
 
 void	fill(char **tab, t_point size, t_point cur, char to_fill)
 {

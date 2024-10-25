@@ -6,11 +6,11 @@
 /*   By: pcapalan <pcapalan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 20:08:58 by pcapalan          #+#    #+#             */
-/*   Updated: 2024/10/24 20:11:56 by pcapalan         ###   ########.fr       */
+/*   Updated: 2024/10/25 18:11:27 by pcapalan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./include/so_long.h"
+#include "../include/so_long.h"
 
 int	on_destroy(t_data *data)
 {
