@@ -40,3 +40,4 @@ void	print_map(char **map, t_data *data, t_point position)
 		matrix.y++;
 	}
 }
+

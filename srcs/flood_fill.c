@@ -42,24 +42,23 @@ void	flood_fill(char **tab, t_point size, t_point begin)
 
 t_point	find_player(char **map)
 {
-	t_point	posion;
+	t_point	position;
 
-	posion.x = 0;
-	posion.y = 0;
-	while (map[posion.y])
+	init_position(&position);
+	while (map[position.y])
 	{
-		posion.x = 0;
-		while (map[posion.y][posion.x])
+		position.x = 0;
+		while (map[position.y][position.x])
 		{
-			if (map[posion.y][posion.x] == 'P')
-				return (posion);
-			posion.x++;
+			if (map[position.y][position.x] == 'P')
+				return (position);
+			position.x++;
 		}
-		posion.y++;
+		position.y++;
 	}
-	posion.x = 0;
-	posion.y = 0;
-	return (posion);
+	position.x = 0;
+	position.y = 0;
+	return (position);
 }
 
 int	check_path(char **map)

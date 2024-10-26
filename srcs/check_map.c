@@ -36,11 +36,14 @@ int	map_extension(char *map)
 		if (ft_strcmp(str, ".ber") != 0)
 		{
 			free(str);
-			return (-1);
+			return (1);
 		}
 	}
 	else
-		return (-1);
+	{
+		free(str);
+		return (1);
+	}
 	free(str);
 	return (0);
 }

@@ -60,12 +60,19 @@ char	**get_map(char *map_path)
 	int		fd;
 	char	*map_str;
 	char	**split;
+	int	status;
 
+	status = map_extension(map_path);
+	if (status != 0)
+	{
+		check_status(status);
+		exit(1);
+	}
 	fd = open(map_path, O_RDONLY);
 	if (fd < 0)
 	{
 		ft_printf("Error\nThe map does not exist\n");
-		exit(0);
+		exit(1);
 	}
 	map_str = ft_read_str(fd);
 	split = ft_split(map_str, '\n');

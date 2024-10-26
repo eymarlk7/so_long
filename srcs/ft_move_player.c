@@ -79,6 +79,17 @@ void	ft_mov_player_down(t_data *data, t_point *player)
 	}
 	player->y++;
 }
+void ft_close_game(char **map, t_data *data)
+{
+	int	i = -1;
+
+	ft_printf("Close\n");
+	while (map[++i])
+		free(map[i]);
+	free(map);
+	on_destroy(data);
+	exit(0);
+}
 
 int	start_player(int keysym, t_data *data)
 {
@@ -99,8 +110,7 @@ int	start_player(int keysym, t_data *data)
 	{
 		data->count++;
 		ft_printf("%d\n", data->count);
-		on_destroy(data);
-		exit(0);
+		ft_close_game(data->map, data);
 	}
-	return (keysym);
+	return (0);
 }

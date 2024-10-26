@@ -12,6 +12,15 @@
 
 #include "../include/so_long.h"
 
+
+// int ft_close(int keycode, t_data *data)
+// {
+// 	ft_printf("%d\n", keycode);
+// 	mlx_destroy_window(data->mlx, data->window);
+// 	exit(0);
+// 	return (0);
+// }
+
 int	main(int ac, char **av)
 {
 	char	**map;
@@ -22,11 +31,6 @@ int	main(int ac, char **av)
 
 	if (ac != 2)
 		return (0);
-	if (av[1][1] == '\0')
-	{
-		ft_printf("Error\nMap path invalid\n");
-		return (0);
-	}
 	map = get_map(av[1]);
 	map1 = get_map(av[1]);
 	status = ft_check_map(av[1], map1);
@@ -39,7 +43,8 @@ int	main(int ac, char **av)
 	}
 	initiate_struct(&data, map);
 	print_map(map, &data, ft_position(position));
-	mlx_key_hook(data.window, start_player, &data);
+	mlx_hook(data.window, 2, 1L<<0, start_player, &data);
+	//mlx_key_hook(data.window, start_player, &data);
 	mlx_loop(data.mlx);
 	return (0);
 }
