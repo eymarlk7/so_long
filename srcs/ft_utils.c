@@ -1,81 +1,66 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_utils.c                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: pcapalan <pcapalan@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/24 20:15:00 by pcapalan          #+#    #+#             */
-/*   Updated: 2024/10/25 19:04:36 by pcapalan         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../include/so_long.h"
 
-int	map_len_y(char **map)
+int len_row(char **map)
 {
-	int	i;
+    int i;
+    int j;
 
-	i = 0;
-	while (map[i])
-		i++;
-	return (i);
+    i = -1;
+    j = 0;
+    while (map[++i])
+    {
+        j = 0;
+        while (map[i][j])
+            j++;
+    }
+    return (i);
 }
 
-int	map_len_x(char *line)
+int find_char(char **map, char c)
 {
-	int	i;
+    int y;
+    int x;
+    int count;
 
-	i = 0;
-	while (line[i])
-		i++;
-	return (i);
+    y = 0;
+    x = 0;
+    count = 0;
+    while (map[y])
+    {
+        x = 0;
+        while (map[y][x])
+        {
+            if (map[y][x] == c)
+                count++;
+            x++;
+        }
+        y++;
+    }
+    return (count);
 }
 
-int	find_char(char **map, char c)
+t_point find_posix(char **map, char c)
 {
-	int	y;
-	int	x;
-	int	count;
+    int i;
+    int j;
+    t_point posix;
 
-	y = 0;
-	x = 0;
-	count = 0;
-	while (map[y])
-	{
-		x = 0;
-		while (map[y][x])
-		{
-			if (map[y][x] == c)
-				count++;
-			x++;
-		}
-		y++;
-	}
-	return (count);
-}
-
-char	**get_map(char *map_path)
-{
-	int		fd;
-	char	*map_str;
-	char	**split;
-	int	status;
-
-	status = map_extension(map_path);
-	if (status != 0)
-	{
-		check_status(status);
-		exit(1);
-	}
-	fd = open(map_path, O_RDONLY);
-	if (fd < 0)
-	{
-		ft_printf("Error\nThe map does not exist\n");
-		exit(1);
-	}
-	map_str = ft_read_str(fd);
-	split = ft_split(map_str, '\n');
-	free(map_str);
-	return (split);
+    j = 0;
+    i = -1;
+    posix.x = 0;
+    posix.y = 0;
+    while (map[++i])
+    {
+        j = -1;
+        while (map[i][++j])
+        {
+            if (map[i][j] == c)
+            {
+                posix.x = j;
+                posix.y = i;
+                return(posix);
+            }
+        }
+    }
+    return(posix);
 }

@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: pcapalan <pcapalan@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/25 17:19:05 by pcapalan          #+#    #+#             */
-/*   Updated: 2024/10/25 18:04:35 by pcapalan         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef SO_LONG_H
 
 # define SO_LONG_H
@@ -23,62 +11,60 @@
 
 # define BUFFER_SIZE 42
 
-typedef struct s_data
-{
-	char	**map;
-	void	*mlx;
-	void	*window;
-	void	*img_c;
-	void	*img_p;
-	void	*img_1;
-	void	*img_0;
-	void	*img_e;
-	int		count;
-}			t_data;
-
 typedef struct s_point
 {
-	int		x;
-	int		y;
-}			t_point;
+    int y;
+    int x;
+}   t_point;
 
-// teste
+typedef struct s_img
+{
+    void    *img_0;
+    void    *img_1;
+    void    *img_c;
+    void    *img_e;
+    void    *img_p;
+}   t_img;
 
-t_point		find_player(char **map);
-void		init_items(t_data *data);
-t_point		ft_position(t_point position);
-void		init_position(t_point *position);
-void		initiate_struct(t_data *data, char **map);
+typedef struct s_game
+{
+    void    *mlx;
+    void    *win;
+    char    **map;
+    int     count_step;
+    t_point posix;
+    t_img   img;
+}   t_game;
 
-char		*ft_read_str(int fd);
-char		**get_map(char *map_path);
 
-int			check_dup(char **map);
-int			map_len_x(char *line);
-int			map_len_y(char **map);
-int			check_path(char **map);
-int			check_line(char **map);
-int			check_walls(char **map);
-int			on_destroy(t_data *data);
-int			check_walls2(char **map);
-int			map_extension(char *map);
-int			check_map_args(char **map);
-int			check_rectangle(char **map);
-int			find_char(char **map, char c);
-int			ft_exit(int keysym, t_data *data);
-int			ft_check_map(char *path, char **map);
-int			start_player(int keysym, t_data *data);
+t_point find_posix(char **map, char c);
 
-void		check_status(int nbr);
-void		img_walls(t_data *data, t_point point);
-void		img_player(t_data *data, t_point point);
-void		img_door(t_data *data, t_point position);
-void		ft_mov_player_up(t_data *data, t_point *player);
-void		img_collectable(t_data *data, t_point position);
-void		img_empty_space(t_data *data, t_point position);
-void		ft_mov_player_down(t_data *data, t_point *player);
-void		ft_mov_player_left(t_data *data, t_point *player);
-void		ft_mov_player_right(t_data *data, t_point *player);
-void		print_map(char **map, t_data *data, t_point point);
+void    ft_free(char **str);
+void    ft_error(char **str);
+
+void	ft_init_game(char **argv);
+void    valid_path(char **cpy_map);
+void	print_map_window(t_game *game);
+void    close_img(void *mlx, t_img *img);
+void	get_img_path(char *mlx, t_img *img);
+void    ft_check_all(char *path, char **map);
+void	get_init_mlx(t_game *game, char **argv);
+void	print_image(t_game *game, char c, int w, int h);
+void    ft_check_path(char **map, int y, int x, t_point begin);
+void	ft_move_other_pos(t_game *game, t_point begin, int y, int x);
+
+int len_row(char **map);
+int check_rows(char **map);
+int ft_open_file(char *argv);
+int	close_game(t_game *game);
+int	window_stop(t_game *game);
+int	window_close(t_game *game);
+int map_around_walls(char **map);
+int find_char(char **map, char c);
+int ft_check_extension(char *argv);
+int	keypress(int key, t_game *game);
+
+char    *ft_read_map(int fd);
+char    **ft_get_map(char *map_path);
 
 #endif

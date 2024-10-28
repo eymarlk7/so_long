@@ -1,116 +1,69 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_move_player.c                                   :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: pcapalan <pcapalan@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/24 20:08:29 by pcapalan          #+#    #+#             */
-/*   Updated: 2024/10/25 18:11:42 by pcapalan         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../include/so_long.h"
 
-void	ft_mov_player_right(t_data *data, t_point *player)
-{
-	t_point	position;
 
-	*player = find_player(data->map);
-	if (data->map[player->y][player->x + 1] != '1'
-		&& data->map[player->y][player->x + 1] != 'E')
-	{
-		data->map[player->y][player->x] = '0';
-		data->map[player->y][player->x + 1] = 'P';
-		print_map(data->map, data, ft_position(position));
-		data->count++;
-		ft_printf("%d\n", data->count);
-	}
-	player->x++;
+void	count_steps(t_game *game)
+{
+	ft_putstr_fd("Steps: ", 1);
+	ft_putnbr_fd(game->count_step, 1);
+	ft_putchar_fd('\n', 1);
 }
 
-void	ft_mov_player_left(t_data *data, t_point *player)
+void	last_step(t_game *game)
 {
-	t_point	position;
-
-	*player = find_player(data->map);
-	if (data->map[player->y][player->x - 1] != '1'
-		&& data->map[player->y][player->x - 1] != 'E')
-	{
-		data->map[player->y][player->x] = '0';
-		data->map[player->y][player->x - 1] = 'P';
-		print_map(data->map, data, ft_position(position));
-		data->count++;
-		ft_printf("%d\n", data->count);
-	}
-	player->x--;
+	game->count_step++;
+	count_steps(game);
+	close_game(game);
 }
 
-void	ft_mov_player_up(t_data *data, t_point *player)
+void	ft_move_other_pos(t_game *game, t_point begin, int y, int x)
 {
-	t_point	position;
+	char	move;
 
-	*player = find_player(data->map);
-	if (data->map[player->y - 1][player->x] != '1' && data->map[player->y
-		- 1][player->x] != 'E')
+	int	count = find_char(game->map, 'C');
+	move = game->map[begin.y + y][begin.x + x];
+	if (move == 'C')
+		count++;
+	if (move != '1')
 	{
-		data->map[player->y][player->x] = '0';
-		data->map[player->y - 1][player->x] = 'P';
-		print_map(data->map, data, ft_position(position));
-		data->count++;
-		ft_printf("%d\n", data->count);
+		if (move == 'E')
+		{
+			if (count == 0)
+				last_step(game);
+			else
+				return ;
+		}
+		else
+		{
+			game->map[begin.y][begin.x] = '0';
+			game->map[begin.y + y][begin.x + x] = 'P';
+		}
+		count++;
+		game->count_step++;
+		count_steps(game);
+		print_map_window(game);
 	}
-	player->y--;
 }
 
-void	ft_mov_player_down(t_data *data, t_point *player)
+int	keypress(int key, t_game *game)
 {
-	t_point	position;
-
-	*player = find_player(data->map);
-	if (data->map[player->y + 1][player->x] != '1' && data->map[player->y
-		+ 1][player->x] != 'E')
+	game->posix = find_posix(game->map, 'P');
+	if (key == 'a' || key == 65361)
 	{
-		data->map[player->y][player->x] = '0';
-		data->map[player->y + 1][player->x] = 'P';
-		print_map(data->map, data, ft_position(position));
-		data->count++;
-		ft_printf("%d\n", data->count);
+		ft_move_other_pos(game, game->posix, 0, -1);
 	}
-	player->y++;
-}
-void ft_close_game(char **map, t_data *data)
-{
-	int	i = -1;
-
-	ft_printf("Close\n");
-	while (map[++i])
-		free(map[i]);
-	free(map);
-	on_destroy(data);
-	exit(0);
-}
-
-int	start_player(int keysym, t_data *data)
-{
-	t_point	player;
-
-	player.y = 0;
-	player.x = 0;
-	ft_exit(keysym, data);
-	if (keysym == 100)
-		ft_mov_player_right(data, &player);
-	else if (keysym == 97)
-		ft_mov_player_left(data, &player);
-	else if (keysym == 119)
-		ft_mov_player_up(data, &player);
-	else if (keysym == 115)
-		ft_mov_player_down(data, &player);
-	if (data->map[player.y][player.x] == 'E' && find_char(data->map, 'C') == 0)
+	if (key == 'd' || key == 65363)
 	{
-		data->count++;
-		ft_printf("%d\n", data->count);
-		ft_close_game(data->map, data);
+		ft_move_other_pos(game, game->posix, 0, 1);
 	}
-	return (0);
+	if (key == 's' || key == 65364)
+	{
+		ft_move_other_pos(game, game->posix, 1, 0);
+	}
+	if (key == 'w' || key == 65362)
+	{
+		ft_move_other_pos(game, game->posix, -1, 0);
+	}
+	if (key == 65307)
+		close_game(game);
+	return (1);
 }
