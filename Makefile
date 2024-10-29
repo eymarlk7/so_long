@@ -6,8 +6,8 @@ SRCS =	./srcs/main.c \
 		./srcs/ft_exit.c \
 		./srcs/read_map.c \
 		./srcs/ft_utils.c \
+		./srcs/finish_game.c \
 		./srcs/ft_init_game.c \
-		./srcs/finished_game.c \
 		./srcs/ft_move_player.c \
 		./srcs/validations/ft_check_map.c \
 		./srcs/validations/ft_check_path.c \
@@ -23,7 +23,7 @@ LIBFT = $(L_DIR)/libft.a
 all: $(NAME)
 
 $(NAME): $(OBJ) $(LIBFT) $(MLX)
-	$(CC) $(OBJ) -L./minilibx-linux $(MLX_FLAGS) -o $(NAME) $(LIBFT)
+	$(CC) $(CFLAGS) $(OBJ) -L./minilibx-linux $(MLX_FLAGS) -o $(NAME) $(LIBFT)
 
 $(MLX):
 	$(MAKE) -s -C ./minilibx-linux

@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_init_game.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pcapalan <pcapalan@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/28 11:56:46 by pcapalan          #+#    #+#             */
+/*   Updated: 2024/10/28 17:46:01 by pcapalan         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../include/so_long.h"
 
@@ -31,8 +42,8 @@ void	print_image(t_game *game, char c, int w, int h)
 
 void	print_map_window(t_game *game)
 {
-	int		i;
-	int		j;
+	int	i;
+	int	j;
 
 	i = -1;
 	game->posix.x = 0;
@@ -42,7 +53,7 @@ void	print_map_window(t_game *game)
 		j = -1;
 		game->posix.x = 0;
 		while (game->map[i][++j])
-		{	
+		{
 			print_image(game, game->map[i][j], game->posix.x, game->posix.y);
 			game->posix.x += 33;
 		}
@@ -62,8 +73,10 @@ void	ft_init_game(char **argv)
 
 	get_init_mlx(&game, argv);
 	game.count_step = 0;
+	game.count_ch = 0;
 	get_img_path(game.mlx, &game.img);
-	game.win = mlx_new_window(game.mlx, ft_strlen(argv[1]) * 33, len_row(argv) * 33,  "SO LONG");
+	game.win = mlx_new_window(game.mlx, ft_strlen(argv[1]) * 33, len_row(argv)
+			* 33, "SO LONG");
 	mlx_hook(game.win, 02, 1L << 0, keypress, &game);
 	mlx_hook(game.win, 17, 0, close_game, &game);
 	print_map_window(&game);

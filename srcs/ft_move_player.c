@@ -1,5 +1,16 @@
-#include "../include/so_long.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_move_player.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pcapalan <pcapalan@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/28 11:57:01 by pcapalan          #+#    #+#             */
+/*   Updated: 2024/10/28 17:52:28 by pcapalan         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
+#include "../include/so_long.h"
 
 void	count_steps(t_game *game)
 {
@@ -19,15 +30,15 @@ void	ft_move_other_pos(t_game *game, t_point begin, int y, int x)
 {
 	char	move;
 
-	int	count = find_char(game->map, 'C');
+	game->count_ch = find_char(game->map, 'C');
 	move = game->map[begin.y + y][begin.x + x];
 	if (move == 'C')
-		count++;
+		game->count_ch++;
 	if (move != '1')
 	{
 		if (move == 'E')
 		{
-			if (count == 0)
+			if (game->count_ch == 0)
 				last_step(game);
 			else
 				return ;
@@ -37,7 +48,7 @@ void	ft_move_other_pos(t_game *game, t_point begin, int y, int x)
 			game->map[begin.y][begin.x] = '0';
 			game->map[begin.y + y][begin.x + x] = 'P';
 		}
-		count++;
+		game->count_ch++;
 		game->count_step++;
 		count_steps(game);
 		print_map_window(game);
