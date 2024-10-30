@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_exit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcapalan <pcapalan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: playboy7xb <playboy7xb@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 11:56:39 by pcapalan          #+#    #+#             */
-/*   Updated: 2024/10/28 17:39:57 by pcapalan         ###   ########.fr       */
+/*   Updated: 2024/10/30 14:41:15 by playboy7xb       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,3 +32,17 @@ void	ft_free(char **str)
 		free(str[i++]);
 	free(str);
 }
+
+// void	ft_free_str(char *argv)
+// {
+// 	int	i;
+
+// 	i = 0;
+// 	while (argv[i])
+// 	{
+// 		free(argv);
+// 		i++;
+// 	}
+// 	free(argv);
+	
+// }

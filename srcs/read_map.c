@@ -3,14 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcapalan <pcapalan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: playboy7xb <playboy7xb@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 11:57:20 by pcapalan          #+#    #+#             */
-/*   Updated: 2024/10/28 11:57:22 by pcapalan         ###   ########.fr       */
+/*   Updated: 2024/10/30 15:01:11 by playboy7xb       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
+
+void	ft_first_line_empty(char *argv)
+{
+	if (*argv == '\0' || *argv == '\n')
+	{
+		ft_putstr_fd("Error\nfirst line is empty or has invalid character\n", 2);
+		free(argv);
+		exit(1);
+	}
+	if (*argv == ' ' || *argv == '\t' 
+	|| (*argv >= 9 && *argv <= 13))
+	{
+		ft_putstr_fd("Error\nfirst line is empty or has invalid character\n", 2);
+		free(argv);
+		exit(1);
+	}		
+}
 
 int	ft_open_file(char *argv)
 {
@@ -62,6 +79,7 @@ char	**ft_get_map(char *map_path)
 		exit(1);
 	}
 	map = ft_read_map(fd);
+	ft_first_line_empty(map);
 	matrix = ft_split(map, '\n');
 	free(map);
 	return (matrix);

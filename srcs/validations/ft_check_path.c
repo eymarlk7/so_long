@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_check_path.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcapalan <pcapalan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: playboy7xb <playboy7xb@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 11:56:10 by pcapalan          #+#    #+#             */
-/*   Updated: 2024/10/28 16:47:58 by pcapalan         ###   ########.fr       */
+/*   Updated: 2024/10/30 14:48:54 by playboy7xb       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	valid_path(char **cpy_map)
 	count_c += find_char(cpy1, 'E');
 	if (count_c != 0)
 	{
-		ft_putstr_fd("Error\npath invalid\n", 2);
+		ft_putstr_fd("Error\ninvalid path\n", 2);
 		ft_free(cpy_map);
 		exit(1);
 	}

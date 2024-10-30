@@ -3,30 +3,40 @@
 /*                                                        :::      ::::::::   */
 /*   ft_check_extension.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcapalan <pcapalan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: playboy7xb <playboy7xb@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 11:55:51 by pcapalan          #+#    #+#             */
-/*   Updated: 2024/10/28 11:55:53 by pcapalan         ###   ########.fr       */
+/*   Updated: 2024/10/30 15:18:24 by playboy7xb       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/so_long.h"
 
-int	ft_check_extension(char *argv)
+char	*cpy_name_path(char *argv)
 {
-	char	*cpy;
 	char	*name_path;
-
-	cpy = '\0';
+	
 	name_path = ft_strchr(argv, '/');
 	if (name_path == NULL)
 		name_path = argv;
 	if (*name_path == '/')
 		name_path++;
-	cpy = ft_strchr(name_path, '.');
+	return (name_path);
+}
+
+int	ft_check_extension(char *argv)
+{
+	char	*name_path;
+	char	*cpy_name_extension;
+
+	cpy_name_extension = '\0';
+	name_path = cpy_name_path(argv);
+	cpy_name_extension = ft_strchr(name_path, '.');
+	if (cpy_name_extension == NULL)
+		cpy_name_extension = name_path;
 	if (ft_strlen(name_path) > 4)
 	{
-		if (ft_strcmp(cpy, ".ber") != 0)
+		if (ft_strcmp(cpy_name_extension, ".ber") != 0)
 		{
 			ft_putstr_fd("Error\nthis map is not valid\n", 2);
 			return (-1);

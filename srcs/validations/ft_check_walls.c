@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_check_walls.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcapalan <pcapalan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: playboy7xb <playboy7xb@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 11:56:17 by pcapalan          #+#    #+#             */
-/*   Updated: 2024/10/28 17:57:08 by pcapalan         ###   ########.fr       */
+/*   Updated: 2024/10/30 14:47:20 by playboy7xb       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int	map_around_walls(char **map)
 {
 	if (ft_walls(map) == -1 || ft_walls2(map) == -1)
 	{
-		ft_putstr_fd("Error\nmap is not between walls\n", 2);
+		ft_putstr_fd("Error\nthe map is not between walls\n", 2);
 		return (-1);
 	}
 	return (0);
@@ -79,7 +79,7 @@ int	check_rows(char **map)
 	{
 		if (ft_strlen(map[y]) != row)
 		{
-			ft_putstr_fd("Error\nmap is not retangular\n", 2);
+			ft_putstr_fd("Error\nThe map lines are not the same\n", 2);
 			return (-1);
 		}
 		y++;

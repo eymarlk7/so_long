@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_move_player.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcapalan <pcapalan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: playboy7xb <playboy7xb@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 11:57:01 by pcapalan          #+#    #+#             */
-/*   Updated: 2024/10/28 17:52:28 by pcapalan         ###   ########.fr       */
+/*   Updated: 2024/10/30 13:52:33 by playboy7xb       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,12 @@ int	keypress(int key, t_game *game)
 	game->posix = find_posix(game->map, 'P');
 	if (key == 'a' || key == 65361)
 	{
+		game->control = 1;
 		ft_move_other_pos(game, game->posix, 0, -1);
 	}
 	if (key == 'd' || key == 65363)
 	{
+		game->control = 0;
 		ft_move_other_pos(game, game->posix, 0, 1);
 	}
 	if (key == 's' || key == 65364)

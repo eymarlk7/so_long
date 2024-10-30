@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   finish_game.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcapalan <pcapalan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: playboy7xb <playboy7xb@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 11:56:26 by pcapalan          #+#    #+#             */
-/*   Updated: 2024/10/28 11:56:29 by pcapalan         ###   ########.fr       */
+/*   Updated: 2024/10/30 13:48:31 by playboy7xb       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,10 @@
 
 void	close_img(void *mlx, t_img *img)
 {
-	if (img->img_p)
-		mlx_destroy_image(mlx, img->img_p);
+	if (img->img_p_left)
+		mlx_destroy_image(mlx, img->img_p_left);
+	if (img->img_p_right)
+		mlx_destroy_image(mlx, img->img_p_right);
 	if (img->img_c)
 		mlx_destroy_image(mlx, img->img_c);
 	if (img->img_e)

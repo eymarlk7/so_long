@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcapalan <pcapalan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: playboy7xb <playboy7xb@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 11:55:33 by pcapalan          #+#    #+#             */
-/*   Updated: 2024/10/28 17:45:21 by pcapalan         ###   ########.fr       */
+/*   Updated: 2024/10/30 14:35:34 by playboy7xb       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ typedef struct s_img
 	void	*img_1;
 	void	*img_c;
 	void	*img_e;
-	void	*img_p;
+	void	*img_p_left;
+	void	*img_p_right;
 }			t_img;
 
 typedef struct s_game
@@ -45,6 +46,7 @@ typedef struct s_game
 	char	**map;
 	int		count_step;
 	int		count_ch;
+	int		control;
 	t_point	posix;
 	t_img	img;
 }			t_game;
@@ -78,5 +80,7 @@ int			keypress(int key, t_game *game);
 
 char		*ft_read_map(int fd);
 char		**ft_get_map(char *map_path);
+
+void	ft_free_str(char *argv);
 
 #endif

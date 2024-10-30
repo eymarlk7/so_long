@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_init_game.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcapalan <pcapalan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: playboy7xb <playboy7xb@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 11:56:46 by pcapalan          #+#    #+#             */
-/*   Updated: 2024/10/28 17:46:01 by pcapalan         ###   ########.fr       */
+/*   Updated: 2024/10/30 13:52:12 by playboy7xb       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ void	get_img_path(char *mlx, t_img *img)
 	img->img_1 = mlx_xpm_file_to_image(mlx, "./textures/img_1.xpm", &x, &y);
 	img->img_c = mlx_xpm_file_to_image(mlx, "./textures/img_c.xpm", &x, &y);
 	img->img_e = mlx_xpm_file_to_image(mlx, "./textures/img_e.xpm", &x, &y);
-	img->img_p = mlx_xpm_file_to_image(mlx, "./textures/img_p.xpm", &x, &y);
+	img->img_p_right = mlx_xpm_file_to_image(mlx, "./textures/img_p0.xpm", &x, &y);
+	img->img_p_left = mlx_xpm_file_to_image(mlx, "./textures/img_p1.xpm", &x, &y);
 }
 
 void	print_image(t_game *game, char c, int w, int h)
@@ -37,7 +38,12 @@ void	print_image(t_game *game, char c, int w, int h)
 	if (c == 'E')
 		mlx_put_image_to_window(game->mlx, game->win, game->img.img_e, w, h);
 	if (c == 'P')
-		mlx_put_image_to_window(game->mlx, game->win, game->img.img_p, w, h);
+	{
+		if (game->control == 0)
+			mlx_put_image_to_window(game->mlx, game->win, game->img.img_p_right, w, h);
+		else
+			mlx_put_image_to_window(game->mlx, game->win, game->img.img_p_left, w, h);
+	}
 }
 
 void	print_map_window(t_game *game)
@@ -74,6 +80,7 @@ void	ft_init_game(char **argv)
 	get_init_mlx(&game, argv);
 	game.count_step = 0;
 	game.count_ch = 0;
+	game.control = 0;
 	get_img_path(game.mlx, &game.img);
 	game.win = mlx_new_window(game.mlx, ft_strlen(argv[1]) * 33, len_row(argv)
 			* 33, "SO LONG");
