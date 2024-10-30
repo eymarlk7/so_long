@@ -6,27 +6,26 @@
 /*   By: playboy7xb <playboy7xb@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 11:57:20 by pcapalan          #+#    #+#             */
-/*   Updated: 2024/10/30 15:01:11 by playboy7xb       ###   ########.fr       */
+/*   Updated: 2024/10/30 16:53:17 by playboy7xb       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-void	ft_first_line_empty(char *argv)
+int	ft_first_line_empty(char *argv)
 {
-	if (*argv == '\0' || *argv == '\n')
+	int	i;
+
+	i = 0;
+	while (argv[i])
 	{
-		ft_putstr_fd("Error\nfirst line is empty or has invalid character\n", 2);
-		free(argv);
-		exit(1);
+		if (argv[i] == '\n' && argv[i + 1] == '\n')
+			return (-1);
+		i++;
 	}
-	if (*argv == ' ' || *argv == '\t' 
-	|| (*argv >= 9 && *argv <= 13))
-	{
-		ft_putstr_fd("Error\nfirst line is empty or has invalid character\n", 2);
-		free(argv);
-		exit(1);
-	}		
+	if (argv[i] == '\0' && argv[i - 1] == '\n')
+		return (-1);
+	return (0);
 }
 
 int	ft_open_file(char *argv)
@@ -79,7 +78,12 @@ char	**ft_get_map(char *map_path)
 		exit(1);
 	}
 	map = ft_read_map(fd);
-	ft_first_line_empty(map);
+	if (ft_first_line_empty(map) != 0)
+	{
+		ft_putstr_fd("Error\nThe map is empty or has invalid character\n", 2);
+		free(map);
+		exit(1);	
+	}
 	matrix = ft_split(map, '\n');
 	free(map);
 	return (matrix);

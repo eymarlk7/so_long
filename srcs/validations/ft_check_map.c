@@ -6,7 +6,7 @@
 /*   By: playboy7xb <playboy7xb@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 11:56:01 by pcapalan          #+#    #+#             */
-/*   Updated: 2024/10/30 14:53:41 by playboy7xb       ###   ########.fr       */
+/*   Updated: 2024/10/30 17:00:26 by playboy7xb       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,11 +76,11 @@ void	ft_check_all(char *path, char **map)
 {
 	if (ft_check_extension(path) == -1)
 		ft_error(map);
+	else if (check_rows(map) == -1)
+		ft_error(map);
 	else if (map_around_walls(map) == -1)
 		ft_error(map);
 	else if (is_retangular(map) == -1)
-		ft_error(map);
-	else if (check_rows(map) == -1)
 		ft_error(map);
 	else if (has_main_char(map))
 		ft_error(map);
