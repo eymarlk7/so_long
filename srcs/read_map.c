@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: playboy7xb <playboy7xb@student.42.fr>      +#+  +:+       +#+        */
+/*   By: pcapalan <pcapalan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 11:57:20 by pcapalan          #+#    #+#             */
-/*   Updated: 2024/10/30 16:53:17 by playboy7xb       ###   ########.fr       */
+/*   Updated: 2024/10/30 19:46:31 by pcapalan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,14 @@ int	ft_first_line_empty(char *argv)
 	int	i;
 
 	i = 0;
+	if (argv[i] == '\0' || argv[i] == '\n')
+		return (-1);
 	while (argv[i])
 	{
 		if (argv[i] == '\n' && argv[i + 1] == '\n')
 			return (-1);
 		i++;
 	}
-	if (argv[i] == '\0' && argv[i - 1] == '\n')
-		return (-1);
 	return (0);
 }
 
@@ -46,7 +46,7 @@ char	*ft_read_map(int fd)
 	size_t	bytes_read;
 
 	bytes_read = 0;
-	map = (char *)malloc(sizeof(buffer));
+	map = (char *)malloc(1);
 	if (!map)
 	{
 		free(map);
@@ -74,15 +74,15 @@ char	**ft_get_map(char *map_path)
 	fd = ft_open_file(map_path);
 	if (fd == -1)
 	{
-		ft_putstr_fd("Error\nmap is not valid\n", 2);
+		ft_putstr_fd("Error\nmap extension invalid\n", 2);
 		exit(1);
 	}
 	map = ft_read_map(fd);
-	if (ft_first_line_empty(map) != 0)
+	if (ft_first_line_empty (map) == -1)
 	{
-		ft_putstr_fd("Error\nThe map is empty or has invalid character\n", 2);
+		ft_putstr_fd("Error\nThe map have one line is empty\n", 2);
 		free(map);
-		exit(1);	
+		exit(1);
 	}
 	matrix = ft_split(map, '\n');
 	free(map);

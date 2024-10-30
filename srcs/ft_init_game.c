@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_init_game.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: playboy7xb <playboy7xb@student.42.fr>      +#+  +:+       +#+        */
+/*   By: pcapalan <pcapalan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 11:56:46 by pcapalan          #+#    #+#             */
-/*   Updated: 2024/10/30 13:52:12 by playboy7xb       ###   ########.fr       */
+/*   Updated: 2024/10/30 17:08:20 by pcapalan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,10 @@ void	get_img_path(char *mlx, t_img *img)
 	img->img_1 = mlx_xpm_file_to_image(mlx, "./textures/img_1.xpm", &x, &y);
 	img->img_c = mlx_xpm_file_to_image(mlx, "./textures/img_c.xpm", &x, &y);
 	img->img_e = mlx_xpm_file_to_image(mlx, "./textures/img_e.xpm", &x, &y);
-	img->img_p_right = mlx_xpm_file_to_image(mlx, "./textures/img_p0.xpm", &x, &y);
-	img->img_p_left = mlx_xpm_file_to_image(mlx, "./textures/img_p1.xpm", &x, &y);
+	img->img_p_right = mlx_xpm_file_to_image(mlx, "./textures/img_p0.xpm", &x,
+			&y);
+	img->img_p_left = mlx_xpm_file_to_image(mlx, "./textures/img_p1.xpm", &x,
+			&y);
 }
 
 void	print_image(t_game *game, char c, int w, int h)
@@ -40,9 +42,11 @@ void	print_image(t_game *game, char c, int w, int h)
 	if (c == 'P')
 	{
 		if (game->control == 0)
-			mlx_put_image_to_window(game->mlx, game->win, game->img.img_p_right, w, h);
+			mlx_put_image_to_window(game->mlx, game->win, game->img.img_p_right,
+				w, h);
 		else
-			mlx_put_image_to_window(game->mlx, game->win, game->img.img_p_left, w, h);
+			mlx_put_image_to_window(game->mlx, game->win, game->img.img_p_left,
+				w, h);
 	}
 }
 

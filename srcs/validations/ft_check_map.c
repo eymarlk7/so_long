@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_check_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: playboy7xb <playboy7xb@student.42.fr>      +#+  +:+       +#+        */
+/*   By: pcapalan <pcapalan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 11:56:01 by pcapalan          #+#    #+#             */
-/*   Updated: 2024/10/30 17:00:26 by playboy7xb       ###   ########.fr       */
+/*   Updated: 2024/10/30 17:09:01 by pcapalan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ int	check_map_char(char **map)
 			if (map[y][x] != '1' && map[y][x] != '0' && map[y][x] != 'C'
 				&& map[y][x] != 'E' && map[y][x] != 'P')
 			{
-				ft_putstr_fd("Error\nAn invalid character was found in the map\n", 2);
+				ft_putstr_fd("Error\nAn invalid character was found in the map\n",
+					2);
 				return (-1);
 			}
 			x++;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: playboy7xb <playboy7xb@student.42.fr>      +#+  +:+       +#+        */
+/*   By: pcapalan <pcapalan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 11:55:33 by pcapalan          #+#    #+#             */
-/*   Updated: 2024/10/30 14:35:34 by playboy7xb       ###   ########.fr       */
+/*   Updated: 2024/10/30 17:07:42 by pcapalan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,7 @@
 # define SO_LONG_H
 # include "../libft/libft.h"
 # include "../minilibx-linux/mlx.h"
-# include <X11/X.h>
-# include <X11/keysym.h>
 # include <fcntl.h>
-# include <stdlib.h>
-# include <unistd.h>
 
 # define BUFFER_SIZE 42
 
@@ -81,6 +77,6 @@ int			keypress(int key, t_game *game);
 char		*ft_read_map(int fd);
 char		**ft_get_map(char *map_path);
 
-void	ft_free_str(char *argv);
+void		ft_free_str(char *argv);
 
 #endif
