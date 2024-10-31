@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_check_walls.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: playboy7xb <playboy7xb@student.42.fr>      +#+  +:+       +#+        */
+/*   By: pcapalan <pcapalan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 11:56:17 by pcapalan          #+#    #+#             */
-/*   Updated: 2024/10/30 14:47:20 by playboy7xb       ###   ########.fr       */
+/*   Updated: 2024/10/31 15:46:58 by pcapalan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,28 @@ int	map_around_walls(char **map)
 	return (0);
 }
 
+int	check_size_map(char **map)
+{
+	int	len_widht;
+	int	len_height;
+
+	len_widht = ft_strlen(map[0]) * 33;
+	len_height = len_row(map) * 33;
+	if (len_height > 1023)
+	{
+		ft_putstr_fd("Error\n", 2);
+		ft_putstr_fd("the height game is greater than the main screen\n", 2);
+		return (-1);
+	}
+	else if (len_widht > 1914)
+	{
+		ft_putstr_fd("Error\n", 2);
+		ft_putstr_fd("the widht game is greater than the main screen\n", 2);
+		return (-1);
+	}
+	return (0);
+}
+
 int	check_rows(char **map)
 {
 	size_t	row;
@@ -79,7 +101,7 @@ int	check_rows(char **map)
 	{
 		if (ft_strlen(map[y]) != row)
 		{
-			ft_putstr_fd("Error\nThe map lines are not the same\n", 2);
+			ft_putstr_fd("Error\nthe map is not rectangular\n", 2);
 			return (-1);
 		}
 		y++;

@@ -74,8 +74,6 @@ void	ft_lstiter(t_list *lst, void (*f)(void *));
 void	ft_lstdelone(t_list *lst, void (*del)(void *));
 void	ft_lstclear(t_list **lst, void (*del)(void *));
 
-// FT_PRINTF FUNCTIONS
-
 int		ft_printchar(char c);
 int		ft_print_string(char *str);
 int		ft_printf(const char *str, ...);

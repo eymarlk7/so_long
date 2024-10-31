@@ -6,7 +6,7 @@
 /*   By: pcapalan <pcapalan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 11:55:51 by pcapalan          #+#    #+#             */
-/*   Updated: 2024/10/30 19:25:59 by pcapalan         ###   ########.fr       */
+/*   Updated: 2024/10/31 11:49:55 by pcapalan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,13 @@ int	ft_check_extension(char *argv)
 	{
 		if (ft_strcmp(cpy_name_extension, ".ber") != 0)
 		{
-			ft_putstr_fd("Error\nthis map is not valid extension error\n", 2);
+			ft_putstr_fd("Error\nthis map is not valid(extension error)\n", 2);
 			return (-1);
 		}
 	}
 	else
 	{
-		ft_putstr_fd("Error\nthis map is not valid extension error\n", 2);
+		ft_putstr_fd("Error\nthis map is not valid(extension error)\n", 2);
 		return (-1);
 	}
 	return (0);

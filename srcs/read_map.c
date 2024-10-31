@@ -6,27 +6,11 @@
 /*   By: pcapalan <pcapalan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 11:57:20 by pcapalan          #+#    #+#             */
-/*   Updated: 2024/10/30 19:46:31 by pcapalan         ###   ########.fr       */
+/*   Updated: 2024/10/31 12:00:24 by pcapalan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
-
-int	ft_first_line_empty(char *argv)
-{
-	int	i;
-
-	i = 0;
-	if (argv[i] == '\0' || argv[i] == '\n')
-		return (-1);
-	while (argv[i])
-	{
-		if (argv[i] == '\n' && argv[i + 1] == '\n')
-			return (-1);
-		i++;
-	}
-	return (0);
-}
 
 int	ft_open_file(char *argv)
 {
@@ -74,11 +58,11 @@ char	**ft_get_map(char *map_path)
 	fd = ft_open_file(map_path);
 	if (fd == -1)
 	{
-		ft_putstr_fd("Error\nmap extension invalid\n", 2);
+		ft_putstr_fd("Error\nthe file does not exist\n", 2);
 		exit(1);
 	}
 	map = ft_read_map(fd);
-	if (ft_first_line_empty (map) == -1)
+	if (ft_line_empty(map) == -1)
 	{
 		ft_putstr_fd("Error\nThe map have one line is empty\n", 2);
 		free(map);

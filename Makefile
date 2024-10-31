@@ -26,20 +26,20 @@ $(NAME): $(OBJ) $(LIBFT) $(MLX)
 	$(CC) $(CFLAGS) $(OBJ) -L./minilibx-linux $(MLX_FLAGS) -o $(NAME) $(LIBFT)
 
 $(MLX):
-	$(MAKE) -s -C ./minilibx-linux
+	$(MAKE) -C ./minilibx-linux
 
 $(LIBFT):
-	$(MAKE) -s -C ./libft
+	$(MAKE) -C ./libft
 
 clean:
 	rm -f $(OBJ)
-	@$(MAKE) clean -s -C ./minilibx-linux
-	@$(MAKE) clean -s -C ./libft
+	@$(MAKE) clean -C ./minilibx-linux
+	@$(MAKE) clean -C ./libft
 
 fclean: clean
 	rm -f $(NAME)
-	@$(MAKE) clean -s -C ./minilibx-linux
-	@$(MAKE) fclean -s -C ./libft
+	@$(MAKE) clean -C ./minilibx-linux
+	@$(MAKE) fclean -C ./libft
 
 re: fclean all
 

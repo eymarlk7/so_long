@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   finish_game.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: playboy7xb <playboy7xb@student.42.fr>      +#+  +:+       +#+        */
+/*   By: pcapalan <pcapalan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 11:56:26 by pcapalan          #+#    #+#             */
-/*   Updated: 2024/10/30 13:48:31 by playboy7xb       ###   ########.fr       */
+/*   Updated: 2024/10/31 14:24:10 by pcapalan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	close_img(void *mlx, t_img *img)
 
 int	window_close(t_game *game)
 {
-	ft_free(game->map);
+	ft_free_no_exit(game->map);
 	close_img(game->mlx, &game->img);
 	mlx_clear_window(game->mlx, game->win);
 	mlx_destroy_window(game->mlx, game->win);
@@ -41,7 +41,7 @@ int	window_close(t_game *game)
 
 int	window_stop(t_game *game)
 {
-	ft_free(game->map);
+	ft_free_no_exit(game->map);
 	close_img(game->mlx, &game->img);
 	mlx_destroy_display(game->mlx);
 	free(game->mlx);

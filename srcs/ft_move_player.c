@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_move_player.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: playboy7xb <playboy7xb@student.42.fr>      +#+  +:+       +#+        */
+/*   By: pcapalan <pcapalan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 11:57:01 by pcapalan          #+#    #+#             */
-/*   Updated: 2024/10/30 13:52:33 by playboy7xb       ###   ########.fr       */
+/*   Updated: 2024/10/31 16:13:28 by pcapalan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	last_step(t_game *game)
 {
 	game->count_step++;
 	count_steps(game);
+	ft_putstr_fd("Congratulations you won\n", 1);
 	close_game(game);
 }
 

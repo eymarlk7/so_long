@@ -6,7 +6,7 @@
 /*   By: pcapalan <pcapalan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 11:55:33 by pcapalan          #+#    #+#             */
-/*   Updated: 2024/10/30 17:07:42 by pcapalan         ###   ########.fr       */
+/*   Updated: 2024/10/31 15:43:13 by pcapalan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,17 +40,17 @@ typedef struct s_game
 	void	*mlx;
 	void	*win;
 	char	**map;
-	int		count_step;
-	int		count_ch;
 	int		control;
+	int		count_ch;
+	int		count_step;
 	t_point	posix;
 	t_img	img;
 }			t_game;
 
 t_point		find_posix(char **map, char c);
 
-void		ft_free(char **str);
-void		ft_error(char **str);
+void		ft_free_no_exit(char **str);
+void		ft_error_to_exit(char **str);
 
 void		ft_init_game(char **argv);
 void		valid_path(char **cpy_map);
@@ -67,8 +67,10 @@ int			len_row(char **map);
 int			check_rows(char **map);
 int			ft_open_file(char *argv);
 int			close_game(t_game *game);
+int			ft_line_empty(char *argv);
 int			window_stop(t_game *game);
 int			window_close(t_game *game);
+int			check_size_map(char **map);
 int			map_around_walls(char **map);
 int			find_char(char **map, char c);
 int			ft_check_extension(char *argv);
@@ -76,7 +78,5 @@ int			keypress(int key, t_game *game);
 
 char		*ft_read_map(int fd);
 char		**ft_get_map(char *map_path);
-
-void		ft_free_str(char *argv);
 
 #endif
