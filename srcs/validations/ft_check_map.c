@@ -6,7 +6,7 @@
 /*   By: pcapalan <pcapalan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 11:56:01 by pcapalan          #+#    #+#             */
-/*   Updated: 2024/10/31 15:31:11 by pcapalan         ###   ########.fr       */
+/*   Updated: 2024/10/31 16:42:52 by pcapalan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,9 +79,9 @@ void	ft_check_all(char *path, char **map)
 {
 	if (ft_check_extension(path) == -1)
 		ft_error_to_exit(map);
-	else if (map_around_walls(map) == -1)
-		ft_error_to_exit(map);
 	else if (check_rows(map) == -1)
+		ft_error_to_exit(map);
+	else if (map_around_walls(map) == -1)
 		ft_error_to_exit(map);
 	else if (has_main_char(map))
 		ft_error_to_exit(map);

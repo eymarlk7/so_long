@@ -6,7 +6,7 @@
 /*   By: pcapalan <pcapalan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 11:56:17 by pcapalan          #+#    #+#             */
-/*   Updated: 2024/10/31 15:46:58 by pcapalan         ###   ########.fr       */
+/*   Updated: 2024/10/31 16:45:07 by pcapalan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,8 @@ int	check_rows(char **map)
 	{
 		if (ft_strlen(map[y]) != row)
 		{
-			ft_putstr_fd("Error\nthe map is not rectangular\n", 2);
+			ft_putstr_fd("Error\nthe map is not rectangular ", 2);
+			ft_putstr_fd("and some lines are not the same\n", 2);
 			return (-1);
 		}
 		y++;
